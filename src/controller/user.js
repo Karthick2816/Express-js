@@ -1,17 +1,17 @@
 import { findIndex } from "../common/helper.js";
 import DB_CONFIG from "../config/dbConfig.js";
 import mongodb, { MongoClient } from "mongodb";
-const user = [
-  {
-    id: 1,
+// const user = [
+//   {
+//     id: 1,
 
-    name: "lali",
-    mail: "lali925@gmail.com",
-    password: "2201",
-    status: "true,",
-    role: "user",
-  },
-];
+//     name: "lali",
+//     mail: "lali925@gmail.com",
+//     password: "2201",
+//     status: "true,",
+//     role: "user",
+//   },
+// ];
 
 const client = new MongoClient(DB_CONFIG.DB_URL);
 const getAllUsers = async (req, res) => {
@@ -22,7 +22,7 @@ const getAllUsers = async (req, res) => {
     let users = await db.collection("users").find().toArray();
     res.status(200).send({
       message: "Sucess",
-      user,
+      users,
     });
   } catch (error) {
     res.status(500).send({
@@ -43,7 +43,7 @@ const getAllUsersById = async (req, res) => {
 
     res.status(200).send({
       message: "Sucess",
-      user,
+      users,
     });
   } catch (error) {
     res.status(500).send({
